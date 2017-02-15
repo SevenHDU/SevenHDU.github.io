@@ -27,7 +27,7 @@
               <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
         
               
-              <a href="/message/"  class=" site-header-nav-item hvr-underline-from-center" title="留言板">留言板</a>
+              <a href="/about/"  class=" site-header-nav-item hvr-underline-from-center" title="关于">关于</a>
         
       </nav>
   </div>
@@ -79,7 +79,7 @@
       <h3 class="repo-list-name" itemprop="name">
         
   
-      <a class="article-title" href="/2016/09/30/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/09/30/hello-world/">Hexo</a>
   
 
       </h3>
@@ -94,6 +94,11 @@
            <time datetime="2016-09-30T02:00:40.000Z" itemprop="datePublished">2016-09-30</time>
         </span>
 
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/hexo/' title=''>hexo</a>
+          </span>
         
       
         <!--
@@ -126,84 +131,19 @@
 	
 
 </div>
-<h3>Popular Repositories</h3>
 
-    
-    <div class="popular-container"></div>
-    
-    <script type="text/template" id="popular-list-template">
-        <a href="{%=clone_url%}" class="card text-center" target="_blank">
-            <div class="thumbnail">
-                <div class="card-image geopattern" data-pattern-id="{%=name%}">
-                    <div class="card-image-cell">
-                        <h3 class="card-title">
-                            {%=name%}
-                        </h3>
-                    </div>
-                </div>
-                <div class="caption">
-                    <div class="card-description">
-                        <p class="card-text">
-                            {%=description%}
-                        </p>
-                    </div>
-                    <div class="card-text">
-                        <span class="meta-info tooltipped tooltipped-n" aria-label="{%=stargazers_count%} stars">
-                            <span class="octicon octicon-star"></span> {%=stargazers_count%}
-                        </span>
-                        <span class="meta-info tooltipped tooltipped-n" aria-label="{%=forks_count%} forks">
-                            <span class="octicon octicon-git-branch"></span> {%=forks_count%}
-                        </span>
-                        <span class="meta-info tooltipped tooltipped-n" aria-label="最后更新时间：{%=updated_at%}">
-                            <span class="octicon octicon-clock"></span>
-                            <time datetime="{%=updated_at%}">{%=updated_at%}</time>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </script>
+	<h3>Blog Tags</h3>
+	<div id="blog-categories">
+		<ul class="list-group">
+			
+				<li class="list-group-item">
+					DOM
+	            	<span class="badge">1</span>
+	        	</li>
+	 		
+		</ul>
+	</div>
 
-    <script src="/js/baiduTemplate.js"></script>
-    <script type="text/javascript">
-        var popular_repos = function(){
-
-            var baiduTpl = new Object();
-
-            var handleTpl = function(){
-                baiduTpl.popular_list = baidu.template("popular-list-template");
-            };
-
-            var handleGithub = function(){
-                var popularContainer = $(".popular-container");
-
-                var repos = "ysale-sms,scude-answer,cordova-plugin-alipay".split(",");
-                for(var i in repos){
-                    var name = repos[i];
-                    $.get("https://api.github.com/repos/SevenHDU/"+name,handle);
-                }
-
-                function handle(result){
-                    result.updated_at = result.updated_at.split("T")[0];
-                    if(result){
-                        var html = baiduTpl.popular_list(result);
-                        popularContainer.append(html);
-                        $(".geopattern").each(function(){           
-                            $(this).geopattern($(this).data('pattern-id'));
-                        });
-                    }
-                }
-            };
-
-            return {
-                init:function(){
-                    handleTpl();
-                    handleGithub();
-                }
-            }
-        }; 
-        $(popular_repos().init);
-    </script>
 
         </div>
     </div>
@@ -243,7 +183,7 @@
             
                   
                   <li>
-                    <a href="/message/"  title="留言板">留言板</a>
+                    <a href="/about/"  title="关于">关于</a>
                   </li>
             
             <li>
