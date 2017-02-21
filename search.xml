@@ -4,8 +4,51 @@
   
     
     <entry>
+      <title><![CDATA[解决在IOS下无法自动播放音频的问题]]></title>
+      <url>http://www.sevenhdu.space/2016/11/21/autoplay-auido-in-ios/</url>
+      <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们知道在IOS下H5页面是无法自动播放音频，必须通过用户交互比如点击等才能播放音频。IOS是为了防止偷跑流量才这么做的。但是很多H5项目中播放背景音频是一个很习以为常的需求。那该怎么办呢？答案就在微信的WeixinJSBridgeReady事件。</p>
+<a id="more"></a>
+<blockquote>
+<p>JavaScript play() and load() methods are also inactive until the user initiates playback, unless the play() or load() method is triggered by user action.</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>WeixinJSBridgeReady是微信自带的事件，只要监听这个事件，在执行函数里播放音频，就可以实现在微信中自动播放音频的功能。（毕竟微信渠道的量大，一定要保证微信是可以正常播放音频）</p>
+<pre><code class="html">&lt;audio src=&quot;bgAudio.mp3&quot; id=&quot;bgAudio&quot; preload loop=&quot;loop&quot;&gt;&lt;/audio&gt;
+</code></pre>
+<pre><code class="javascript">function playBgAudio(){
+    var bgAudio = document.getElementById(&quot;bgAudio&quot;);
+    bgAudio.play();
+
+    document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function(){
+        bgAudio.play();
+    }, false);
+}
+</code></pre>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>很多同学发现用了上面的代码也没什么卵用，因为这里面还有个坑。上面的代码必须放在WeixinJSBridgeReady执行以前，如果WeixinJSBridgeReady事件都执行，再监听就没什么用了。<strong><em>所以监听的js代码一定要放在head前面，以确保最先执行</em></strong>。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hexo]]></title>
+      <url>http://www.sevenhdu.space/2016/09/30/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[深入理解DOM事件流]]></title>
-      <url>http://www.sevenhdu.space/2017/02/14/dom-event-flow/</url>
+      <url>http://www.sevenhdu.space/2015/02/14/dom-event-flow/</url>
       <content type="html"><![CDATA[<p>当浏览器发展到第四代时（IE4和Netscape Communicator 4）,浏览器团队遇到一个很有意思的问题：页面的哪一部分会拥有特定的事件？想象下在一张纸上有一组同心圆，如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是一组圆。两家公司的开发团队在看待浏览器事件方面还是一致的。如果你单击了某个按钮，那么同时你也单击了按钮的容器元素，甚至整个页面。<br>事件流描述的是从页面中接受事件的顺序。但有意思的是，IE和Netscape开发团队居然提出了两个截然相反的事件流概念。IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流。</p>
 <a id="more"></a>
 <h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>IE的事件流叫做事件冒泡，即事件开始时由最具体的元素接受，然后逐级向上传播到较为不具体的节点。看下面的例子</p>
@@ -47,25 +90,6 @@
 &lt;/html&gt;
 </code></pre>
 <p>这个Demo的结果，应该很清楚了吧。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Hexo]]></title>
-      <url>http://www.sevenhdu.space/2016/09/30/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     </entry>
     
