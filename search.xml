@@ -47,6 +47,77 @@
     </entry>
     
     <entry>
+      <title><![CDATA[CSS中的伪类和伪元素]]></title>
+      <url>http://www.sevenhdu.space/2015/03/05/css-pseudo-class-and-pseudo-elments/</url>
+      <content type="html"><![CDATA[<p>先看<code>W3C</code>的定义<br>. <strong>CSS伪类</strong> 用于向某些选择器添加特殊的效果<br>. <strong>CSS伪元素</strong> 用于向某些选择器设置特殊效果</p>
+<p>光看定义，其实还是云里雾里的，所以还是要深入研究下才能搞明白他们的作用。</p>
+<a id="more"></a>
+<h2 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h2><p>伪类与类相似，但又没有类附加标签上。伪类分为UI伪类和结构化伪类。</p>
+<h3 id="UI伪类"><a href="#UI伪类" class="headerlink" title="UI伪类"></a>UI伪类</h3><ul>
+<li>:link(将样式添加到未被访问的链接上)</li>
+<li>:visted(将样式已添加到访问的链接上)</li>
+<li>:hover(将样式添加到鼠标悬浮的元素上)</li>
+<li>:active(将样式添加到被激活的元素上)</li>
+<li>:focus(将样式添加到被选中的元素上)</li>
+</ul>
+<h3 id="结构化伪类"><a href="#结构化伪类" class="headerlink" title="结构化伪类"></a>结构化伪类</h3><ul>
+<li>:first-child(将样式添加到第一个子元素上)</li>
+<li>:last-child(将样式添加到最后一个子元素上)</li>
+</ul>
+<h2 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h2><p>伪元素是在文档中若有实无的元素。<br>主要有以下几种</p>
+<ul>
+<li>:first-letter(将样式添加到第一个字母)</li>
+<li>:first-line(将样式添加到第一行)</li>
+<li>:before(在某些元素前面插入某些内容)</li>
+<li>:after(在某些元素后面插入某些内容)</li>
+</ul>
+<p>看到:after，大家脑子里应该都能想到那个经典的清除浮动的CSS的吧。没错，就是这个。</p>
+<pre><code class="css">.clearfix:after {
+    content:&quot;.&quot;;
+    display:block;
+    height:0;
+    visibility:hidden;
+    clear:both;
+}
+</code></pre>
+<h2 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h2><p><strong>伪类的实现就好比给这个标签添加了一个虚拟的类。</strong><br>举个栗子</p>
+<pre><code class="html">a:hover{
+    font-size:20px;
+    color:red
+}
+&lt;a href=&quot;#&quot;&gt;Hello,World&lt;/a&gt;
+</code></pre>
+<p>若不用伪类，实现同样的效果，需要这么做</p>
+<pre><code class="html">.hover{
+    font-size:20px;
+    color:red
+}
+&lt;a href=&quot;#&quot; class=&quot;hover&quot;&gt;Hello,World&lt;/a&gt;
+</code></pre>
+<p>这么一对比，”伪类“的概念是不是清晰了很多。</p>
+<p><strong>而伪元素则好比添加了一个新的标签。</strong></p>
+<pre><code class="html">p:first-letter{
+    font-size:20px;
+    color:red
+}
+&lt;p&gt;Hello,World&lt;/p&gt;
+</code></pre>
+<p>若不用伪元素，实现同样的效果，需要添加一个额外的标签</p>
+<pre><code class="html">.first-letter{
+    font-size:20px;
+    color:red
+}
+&lt;p&gt;&lt;span class=&quot;first-letter&quot;&gt;H&lt;/span&gt;ello,World&lt;/p&gt;
+</code></pre>
+<p>因此总结下区分的方法：<strong>现实相同效果是需要添加一个类还是一个元素标签。</strong></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>CSS3为了区别伪类和伪元素，明确使用单冒号来表示伪类，双冒号来表示伪元素。但为兼容性考虑，目前基本还是使用单冒号来表示。</li>
+<li>搜索引擎不会搜索伪元素的信息。因此，不要通过伪元素添加你想让搜索引擎索引的重要内容</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[深入理解DOM事件流]]></title>
       <url>http://www.sevenhdu.space/2014/10/16/dom-event-flow/</url>
       <content type="html"><![CDATA[<p>当浏览器发展到第四代时（IE4和Netscape Communicator 4）,浏览器团队遇到一个很有意思的问题：页面的哪一部分会拥有特定的事件？想象下在一张纸上有一组同心圆，如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是一组圆。两家公司的开发团队在看待浏览器事件方面还是一致的。如果你单击了某个按钮，那么同时你也单击了按钮的容器元素，甚至整个页面。<br>事件流描述的是从页面中接受事件的顺序。但有意思的是，IE和Netscape开发团队居然提出了两个截然相反的事件流概念。IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流。</p>
