@@ -98,6 +98,7 @@
       <url>http://www.sevenhdu.space/2014/08/18/DB2-sum-groupby/</url>
       <content type="html"><![CDATA[<p>最近参与的项目进行了一次优化技改，对其中SQL参数化公用方法进行了改造。又因项目组人员调整，接手其他模块。</p>
 <p>在其他模块测试过程发现，一个针对日期分组计算的SQL报错，报SQL语句超长的异常。</p>
+<a id="more"></a>
 <p>举个栗子，功能要求如下：</p>
 <p>表TABLE_TEST中</p>
 <table>
