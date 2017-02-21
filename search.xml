@@ -4,8 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[Hexo]]></title>
+      <url>http://www.sevenhdu.space/2016/09/30/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[解决在IOS下无法自动播放音频的问题]]></title>
-      <url>http://www.sevenhdu.space/2016/11/21/autoplay-auido-in-ios/</url>
+      <url>http://www.sevenhdu.space/2016/09/21/autoplay-auido-in-ios/</url>
       <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们知道在IOS下H5页面是无法自动播放音频，必须通过用户交互比如点击等才能播放音频。IOS是为了防止偷跑流量才这么做的。但是很多H5项目中播放背景音频是一个很习以为常的需求。那该怎么办呢？答案就在微信的WeixinJSBridgeReady事件。</p>
 <a id="more"></a>
 <blockquote>
@@ -28,27 +47,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Hexo]]></title>
-      <url>http://www.sevenhdu.space/2016/09/30/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[深入理解DOM事件流]]></title>
-      <url>http://www.sevenhdu.space/2015/02/14/dom-event-flow/</url>
+      <url>http://www.sevenhdu.space/2014/10/16/dom-event-flow/</url>
       <content type="html"><![CDATA[<p>当浏览器发展到第四代时（IE4和Netscape Communicator 4）,浏览器团队遇到一个很有意思的问题：页面的哪一部分会拥有特定的事件？想象下在一张纸上有一组同心圆，如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是一组圆。两家公司的开发团队在看待浏览器事件方面还是一致的。如果你单击了某个按钮，那么同时你也单击了按钮的容器元素，甚至整个页面。<br>事件流描述的是从页面中接受事件的顺序。但有意思的是，IE和Netscape开发团队居然提出了两个截然相反的事件流概念。IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流。</p>
 <a id="more"></a>
 <h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>IE的事件流叫做事件冒泡，即事件开始时由最具体的元素接受，然后逐级向上传播到较为不具体的节点。看下面的例子</p>
@@ -90,6 +90,70 @@
 &lt;/html&gt;
 </code></pre>
 <p>这个Demo的结果，应该很清楚了吧。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[DB2日期分组计算数据值]]></title>
+      <url>http://www.sevenhdu.space/2014/08/18/DB2-sum-groupby/</url>
+      <content type="html"><![CDATA[<p>最近参与的项目进行了一次优化技改，对其中SQL参数化公用方法进行了改造。又因项目组人员调整，接手其他模块。</p>
+<p>在其他模块测试过程发现，一个针对日期分组计算的SQL报错，报SQL语句超长的异常。</p>
+<p>举个栗子，功能要求如下：</p>
+<p>表TABLE_TEST中</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:center">AMOUNT</th>
+<th style="text-align:right">CREATE_DATE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-01</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-09</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-11</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-21</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-24</td>
+</tr>
+</tbody>
+</table>
+<p>需求是从表中按CREAT_DATE每10天作为一个分组，统计总金额</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>之前的SQL是这样子的</p>
+<pre><code class="SQL">SELECT SUM(AMOUT) AS TOTALAMOUNT FORM TABLE_TEST
+WHERE CREATE_DATE BETWEEN &#39;2014-01-01&#39; AND &#39;2014-01-10&#39;
+UNION ALL
+SELECT SUM(AMOUT) AS TOTALAMOUNT FORM TABLE_TEST
+WHERE CREATE_DATE BETWEEN &#39;2014-01-11&#39; AND &#39;2014-01-20&#39;
+UNION ALL
+SELECT SUM(AMOUT) AS TOTALAMOUNT FORM TABLE_TEST
+WHERE CREATE_DATE BETWEEN &#39;2014-01-21&#39; AND &#39;2014-01-30&#39;
+</code></pre>
+<p>这个SQL主要有两方面问题，一方面程序逻辑发杂，需要算计每10天时间间隔的起始日期，还有一个方面是SQL语句冗长，如果日期跨度大的话，SQL语句就回相当长，直接导致程序抛异常。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>改进的SQL</p>
+<pre><code class="SQL">SELECT SUM(AMOUNT) AS TOTALAMOUNT , (days(CREATE_DATE)-days(&#39;2014-01-01&#39;))/10 AS TIMESAPN
+FROM TABLE_TEST GROUP BY TIMESAPN
+</code></pre>
+<p>关键部分在于  <strong>(days(CREATE_DATE)-days(‘2014-01-01’))/10 AS TIMESAPN</strong></p>
+<p>TIMESAPN为0则表示该记录在第一个10天周期内，为1表示在第二个10天周期内，以此类推，最后以此字段作为分组条件，就可以达到上面SQL同样的效果。</p>
 ]]></content>
     </entry>
     

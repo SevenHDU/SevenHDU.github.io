@@ -74,44 +74,6 @@
     <div class="columns">
         <div class="column two-thirds">
             
-                  <article id="post-autoplay-auido-in-ios" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
-        
-  
-      <a class="article-title" href="/2016/11/21/autoplay-auido-in-ios/">解决在IOS下无法自动播放音频的问题</a>
-  
-
-      </h3>
-      <div class="repo-list-description">
-        
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们知道在IOS下H5页面是无法自动播放音频，必须通过用户交互比如点击等才能播放音频。IOS是为了防止偷跑流量才这么做的。但是很多H5项目中播放背景音频是一个很习以为常的需求。那该怎么办呢？答案就在微信的WeixinJSBridgeReady事件。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2016-11-21T05:10:46.000Z" itemprop="datePublished">2016-11-21</time>
-        </span>
-
-        
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href='/categories/web/' title=''>web</a>
-          </span>
-        
-
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-          
-        -->
-
-      </p>
-    </div>
-  </article>
-
-            
                   <article id="post-hello-world" class="repo-list">
     <div class="repo-list-item" >
       <h3 class="repo-list-name" itemprop="name">
@@ -148,12 +110,50 @@
   </article>
 
             
+                  <article id="post-autoplay-auido-in-ios" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/2016/09/21/autoplay-auido-in-ios/">解决在IOS下无法自动播放音频的问题</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们知道在IOS下H5页面是无法自动播放音频，必须通过用户交互比如点击等才能播放音频。IOS是为了防止偷跑流量才这么做的。但是很多H5项目中播放背景音频是一个很习以为常的需求。那该怎么办呢？答案就在微信的WeixinJSBridgeReady事件。</p>
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2016-09-21T05:10:46.000Z" itemprop="datePublished">2016-09-21</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/web/' title=''>web</a>
+          </span>
+        
+
+        <!--
+          
+            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+
+            
                   <article id="post-dom-event-flow" class="repo-list">
     <div class="repo-list-item" >
       <h3 class="repo-list-name" itemprop="name">
         
   
-      <a class="article-title" href="/2015/02/14/dom-event-flow/">深入理解DOM事件流</a>
+      <a class="article-title" href="/2014/10/16/dom-event-flow/">深入理解DOM事件流</a>
   
 
       </h3>
@@ -165,7 +165,7 @@
       <p class="repo-list-meta">
         <span class="meta-info">
           <span class="octicon octicon-calendar"></span>
-           <time datetime="2015-02-14T15:56:23.000Z" itemprop="datePublished">2015-02-14</time>
+           <time datetime="2014-10-16T15:56:23.000Z" itemprop="datePublished">2014-10-16</time>
         </span>
 
         
@@ -178,6 +178,102 @@
         <!--
           
             <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+
+            
+                  <article id="post-DB2-sum-groupby" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
+  
+      <a class="article-title" href="/2014/08/18/DB2-sum-groupby/">DB2日期分组计算数据值</a>
+  
+
+      </h3>
+      <div class="repo-list-description">
+        
+          <p>最近参与的项目进行了一次优化技改，对其中SQL参数化公用方法进行了改造。又因项目组人员调整，接手其他模块。</p>
+<p>在其他模块测试过程发现，一个针对日期分组计算的SQL报错，报SQL语句超长的异常。</p>
+<p>举个栗子，功能要求如下：</p>
+<p>表TABLE_TEST中</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:center">AMOUNT</th>
+<th style="text-align:right">CREATE_DATE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-01</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-09</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-11</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-21</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:center">100</td>
+<td style="text-align:right">2014-01-24</td>
+</tr>
+</tbody>
+</table>
+<p>需求是从表中按CREAT_DATE每10天作为一个分组，统计总金额</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>之前的SQL是这样子的</p>
+<pre><code class="SQL">SELECT SUM(AMOUT) AS TOTALAMOUNT FORM TABLE_TEST
+WHERE CREATE_DATE BETWEEN &#39;2014-01-01&#39; AND &#39;2014-01-10&#39;
+UNION ALL
+SELECT SUM(AMOUT) AS TOTALAMOUNT FORM TABLE_TEST
+WHERE CREATE_DATE BETWEEN &#39;2014-01-11&#39; AND &#39;2014-01-20&#39;
+UNION ALL
+SELECT SUM(AMOUT) AS TOTALAMOUNT FORM TABLE_TEST
+WHERE CREATE_DATE BETWEEN &#39;2014-01-21&#39; AND &#39;2014-01-30&#39;
+</code></pre>
+<p>这个SQL主要有两方面问题，一方面程序逻辑发杂，需要算计每10天时间间隔的起始日期，还有一个方面是SQL语句冗长，如果日期跨度大的话，SQL语句就回相当长，直接导致程序抛异常。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>改进的SQL</p>
+<pre><code class="SQL">SELECT SUM(AMOUNT) AS TOTALAMOUNT , (days(CREATE_DATE)-days(&#39;2014-01-01&#39;))/10 AS TIMESAPN
+FROM TABLE_TEST GROUP BY TIMESAPN
+</code></pre>
+<p>关键部分在于  <strong>(days(CREATE_DATE)-days(‘2014-01-01’))/10 AS TIMESAPN</strong></p>
+<p>TIMESAPN为0则表示该记录在第一个10天周期内，为1表示在第二个10天周期内，以此类推，最后以此字段作为分组条件，就可以达到上面SQL同样的效果。</p>
+
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2014-08-18T15:32:41.000Z" itemprop="datePublished">2014-08-18</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/SQL/' title=''>SQL</a>
+          </span>
+        
+
+        <!--
+          
+            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB2/">DB2</a></li></ul>
           
         -->
 
@@ -220,6 +316,11 @@
 	 		
 				<li class="list-group-item">
 					DOM
+	            	<span class="badge">1</span>
+	        	</li>
+	 		
+				<li class="list-group-item">
+					DB2
 	            	<span class="badge">1</span>
 	        	</li>
 	 		
