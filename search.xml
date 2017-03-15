@@ -4,6 +4,21 @@
   
     
     <entry>
+      <title><![CDATA[如何在移动端触发手机拨打电话]]></title>
+      <url>http://www.sevenhdu.space/2017/03/15/make-call-in-mobile/</url>
+      <content type="html"><![CDATA[<p>在移动端的项目中，经常会有这样的需求，点击按钮触发手机拨打电话。<br><a id="more"></a><br>这个需求其实很简单，按照下面的写法其实就可以实现。</p>
+<pre><code class="html">&lt;a href=&quot;tel:10086&quot;&gt;拨打电话&lt;/a&gt;
+</code></pre>
+<p>而最近遇到的需求是电话号码动态变化的，因此想着能不能通过js来动态触发这个动作。搜了一下果然是有方法的。</p>
+<pre><code class="javascript">function makeCall(telNo){
+    window.location.href = &quot;tel:&quot; + telNo;
+}
+</code></pre>
+<p>亲测，在IOS中微信、Safari、UC以及Android中的微信、UC均可触发拨打电话效果。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo]]></title>
       <url>http://www.sevenhdu.space/2016/09/30/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
