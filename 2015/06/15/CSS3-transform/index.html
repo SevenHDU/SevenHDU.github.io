@@ -64,7 +64,7 @@
     <div class="columns">
         <div class="column three-fourths" >
             <article class="article-content markdown-body">
-                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>transform可以对元素应用2D或3D变换，包括移动（translate）、缩放（scale）、倾斜（skew）、旋转（rotate）。通过transform可以做出很多动画效果。</p>
+                <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>transform可以对元素应用2D或3D变换，包括移动（translate）、缩放（scale）、倾斜（skew）、旋转（rotate）。通过transform可以实现很多动画效果。</p>
 <a id="more"></a>
 <h2 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h2><table>
 <thead>
@@ -95,11 +95,32 @@
 <p>可以同一个元素使用多个不同类型的变换，只要变换之间以空格隔开</p>
 <pre><code class="css">transform: translate(50px, 100px) scale(2, 3) rotate(60deg);
 </code></pre>
+<p>还有高级用法矩阵matrix，它可以将多个变换整合到一个变换函数中。<br>比如<br><code>rotate(45deg) translate(24px,25px)</code><br>对应<br><code>matrix(0.707107, 0.707107, -0.707107, 0.707107, -0.707107, 34.6482)</code><br>有这样一个转换的网站，可以自己试试看。<a href="http://meyerweb.com/eric/tools/matrix/" target="_blank" rel="external">传送门</a></p>
+<p>想深入理解可以看看这篇文章<a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/" target="_blank" rel="external">理解CSS3 transform中的Matrix(矩阵)</a></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>直接上例子，为了让变换不那么生硬，加了过渡属性transition。</p>
 <iframe height="265" scrolling="no" title="CSS3 transform" src="//codepen.io/SevenHDU/embed/YZxROr/?height=265&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SevenHDU/pen/YZxROr/" target="_blank" rel="external">CSS3 transform</a> by Seven (<a href="http://codepen.io/SevenHDU" target="_blank" rel="external">@SevenHDU</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
 
 <h2 id="transform-origin的玄机"><a href="#transform-origin的玄机" class="headerlink" title="transform-origin的玄机"></a>transform-origin的玄机</h2><p>transfrom属性和transform-origin是息息相关的。transform是以tranform-origin的值作为原点进行变换的，默认是中心点。<br>看下面的例子。</p>
 <iframe height="300" scrolling="no" title="Transform-origin" src="//codepen.io/SevenHDU/embed/wJrggy/?height=300&theme-id=0&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/SevenHDU/pen/wJrggy/" target="_blank" rel="external">Transform-origin</a> by Seven (<a href="http://codepen.io/SevenHDU" target="_blank" rel="external">@SevenHDU</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<h2 id="在桌面端和移动端用CSS开启硬件加速"><a href="#在桌面端和移动端用CSS开启硬件加速" class="headerlink" title="在桌面端和移动端用CSS开启硬件加速"></a>在桌面端和移动端用CSS开启硬件加速</h2><p>浏览器检测到元素应用某些CSS属性时，会开启硬件加速。其中一个就是3D变换。<br>例如</p>
+<pre><code class="css">.ele {
+   -webkit-transform: translate3d(250px,250px,250px)
+   rotate3d(250px,250px,250px,-120deg)
+   scale3d(0.5, 0.5, 0.5);
+}
+</code></pre>
+<p>可是在一些情况下，我们并不需要对元素应用3D变换的效果，那怎么办呢？这时候我们可以使用个小技巧“欺骗”浏览器来开启硬件加速。</p>
+<pre><code class="css">.ele {
+   -webkit-transform: translateZ(0)
+}
+</code></pre>
+<p>硬件加速在移动端尤其有用。<br>通过开启GPU硬件加速虽然可以提升动画渲染性能或解决一些棘手问题，但使用仍需谨慎，使用前一定要进行严谨的测试，否则它反而会大量占用浏览网页用户的系统资源，尤其是在移动端，肆无忌惮的开启GPU硬件加速会导致大量消耗设备电量，降低电池寿命等问题。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms" target="_blank" rel="external">Using CSS transforms</a></li>
+<li><a href="https://css-tricks.com/almanac/properties/t/transform/" target="_blank" rel="external">transform</a></li>
+<li><a href="http://www.cnblogs.com/PeunZhang/p/3510083.html" target="_blank" rel="external">用CSS开启硬件加速来提高网站性能</a></li>
+</ul>
 
             </article>
             
@@ -146,7 +167,7 @@
 <div id="post-directory-module">
 	<section class="post-directory">
 		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用属性"><span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transform-origin的玄机"><span class="toc-text">transform-origin的玄机</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用属性"><span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transform-origin的玄机"><span class="toc-text">transform-origin的玄机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在桌面端和移动端用CSS开启硬件加速"><span class="toc-text">在桌面端和移动端用CSS开启硬件加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
 	</section>
 </div>
             
