@@ -62,6 +62,14 @@
     </entry>
     
     <entry>
+      <title><![CDATA[fixed定位元素在设置了transform属性父元素下失效]]></title>
+      <url>http://www.sevenhdu.space/2016/09/17/position-fixed-not-work-in-transform/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<iframe height="265" scrolling="no" title="jBaKqW" src="//codepen.io/SevenHDU/embed/jBaKqW/?height=265&theme-id=0&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/SevenHDU/pen/jBaKqW/" target="_blank" rel="external">jBaKqW</a> by Seven (<a href="http://codepen.io/SevenHDU" target="_blank" rel="external">@SevenHDU</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Atom编辑器快捷键大全]]></title>
       <url>http://www.sevenhdu.space/2016/03/24/Atom-shortcut-keys/</url>
       <content type="html"><![CDATA[<blockquote>
