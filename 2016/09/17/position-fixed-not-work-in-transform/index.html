@@ -64,14 +64,20 @@
     <div class="columns">
         <div class="column three-fourths" >
             <article class="article-content markdown-body">
-                <a id="more"></a>
-<iframe height="265" scrolling="no" title="jBaKqW" src="//codepen.io/SevenHDU/embed/jBaKqW/?height=265&theme-id=0&default-tab=result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/SevenHDU/pen/jBaKqW/" target="_blank" rel="external">jBaKqW</a> by Seven (<a href="http://codepen.io/SevenHDU" target="_blank" rel="external">@SevenHDU</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+                <p>最近项目开发中遇到了一个奇怪的现象，<code>position:fixed</code>设置元素竟然不相对浏览器定位。最后发现原来是transform捣的鬼。<br>当fixed元素作为transform元素的资源时，<code>position:fixed</code>固定效果将失效，降级成类似<code>position:absolute</code>的表现。</p>
+<a id="more"></a>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><iframe height="265" scrolling="no" title="jBaKqW" src="//codepen.io/SevenHDU/embed/jBaKqW/?height=265&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="https://codepen.io/SevenHDU/pen/jBaKqW/" target="_blank" rel="external">jBaKqW</a> by Seven (<a href="http://codepen.io/SevenHDU" target="_blank" rel="external">@SevenHDU</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe>
+
+<p>看完上面的例子，应该就清晰很多了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2015/05/css3-transform-affect/" target="_blank" rel="external">CSS3 transform对普通元素的N多渲染影响</a></li>
+</ul>
 
             </article>
             
                 <div class="share">
                     <!--开启分享-->
-<div class="share-component" data-disabled="google,twitter,facebook" data-description=""></div>
+<div class="share-component" data-disabled="google,twitter,facebook" data-description="最近项目开发中遇到了一个奇怪的现象，position:..."></div>
 
 <script src="/js/share.min.js"></script>
 
@@ -112,7 +118,7 @@
 <div id="post-directory-module">
 	<section class="post-directory">
 		<p><strong class="toc-title">文章目录</strong></p>
-		
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
 	</section>
 </div>
             
