@@ -19,6 +19,51 @@
     </entry>
     
     <entry>
+      <title><![CDATA[如何在Webpack中动态引用资源]]></title>
+      <url>http://www.sevenhdu.space/2017/02/22/dynamic-requires-in-webpack/</url>
+      <content type="html"><![CDATA[<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-3-22/509920-file_1490187075588_10c58.jpg" alt="Webpack"></p>
+<a id="more"></a>
+<p>最近项目中遇到一个问题，就是想把img目录下所有的图片资源动态加载进来。项目使用webpack构建的。</p>
+<p>笨办法就是这样。</p>
+<pre><code class="javascript">import img1 from &quot;./img/img1.png&quot;;
+import img2 from &quot;./img/img2.png&quot;;
+import img3 from &quot;./img/img3.png&quot;;
+</code></pre>
+<p>这办法明显是不可取，不利于维护。之前使用FIS的时候，也遇到过类似问题，使用<code>__CDNPATH</code>这个变量来解决的。Webpack也有办法的。</p>
+<pre><code class="javascript">
+let banner = [{
+    img : &quot;./img1.jpg&quot;,
+    url : &quot;http://example.com&quot;
+},{
+    img : &quot;./img2.jpg&quot;,
+    url : &quot;http://example.com&quot;
+},{
+    img : &quot;./img3.jpg&quot;,
+    url : &quot;http://example.com&quot;
+}];
+
+let req = require.context(&quot;../img&quot;, true, /^\.\/.*\.jpg/);
+//读取banner
+const images  = banner.map((item)=&gt;{
+    return {
+        img  : req(item.image),
+        url  : item.url
+    }
+});
+</code></pre>
+<p><code>require.context</code>可以创建自己的上下文。允许传三个参数</p>
+<ul>
+<li>匹配的目录</li>
+<li>是否包含子目录的布尔值</li>
+<li>匹配具体文件的正则</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://webpack.github.io/docs/context.html" target="_blank" rel="external">Webpack CONTEXT</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[解决在IOS下无法自动播放音频的问题]]></title>
       <url>http://www.sevenhdu.space/2016/09/21/autoplay-auido-in-ios/</url>
       <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我们知道在IOS下H5页面是无法自动播放音频，必须通过用户交互比如点击等才能播放音频。IOS是为了防止偷跑流量才这么做的。但是很多H5项目中播放背景音频是一个很习以为常的需求。那该怎么办呢？答案就在微信的WeixinJSBridgeReady事件。</p>
@@ -96,6 +141,71 @@
 <p>b, legal, img, l, i, code, t, table</p>
 </blockquote>
 <h2 id="git操作"><a href="#git操作" class="headerlink" title="git操作"></a>git操作</h2><p><code>cmd-alt-Z</code> checkout HEAD 版本<br><code>cmd-shift-B</code> 弹出untracked 和 modified文件列表<br><code>alt-g down</code> <code>alt-g up</code> 在修改处跳转<br><code>alt-G D</code> 弹出diff列表<br><code>alt-G O</code> 在github上打开文件<br><code>alt-G G</code> 在github上打开项目地址<br><code>alt-G B</code> 在github上打开文件blame<br><code>alt-G H</code> 在github上打开文件history<br><code>alt-G I</code> 在github上打开issues<br><code>alt-G R</code> 在github打开分支比较<br><code>alt-G C</code> 拷贝当前文件在gihub上的网址</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Webpack 入门]]></title>
+      <url>http://www.sevenhdu.space/2016/03/22/webpack-introduction/</url>
+      <content type="html"><![CDATA[<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-3-22/18733749-file_1490166715919_842e.png" alt="什么是Webpack"></p>
+<a id="more"></a>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Webpack是一个模块打包器，高度可配置。它会根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
+<p>Webpack将项目中用到的一切静态资源都视为模块，模块之间可以相互依赖。Webpack对它们进项统一的管理和打包。</p>
+<p>Webpack有四个比较重要的概念：入口(Entry)、出口(Output)、加载器(Loaders)、插件(Plugins)。</p>
+<h2 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h2><p>Entry定义了入口文件比如entry.js。Webpack 会分析入口文件，解析包含依赖关系的各个文件。这些文件（模块）都打包到出口文件（output定义的文件）例如bundle.js 。Webpack 会给每个模块分配一个唯一的 id 并通过这个 id 索引和访问模块。在页面启动时，会先执行 entry.js 中的代码，其它模块会在运行 require 的时候再执行。</p>
+<pre><code class="javascript">module.exports = {
+    entry: &#39;entry.js&#39;
+};
+</code></pre>
+<p>更多应用应用场景可以参考<a href="https://doc.webpack-china.org/concepts/entry-points/" target="_blank" rel="external">这里</a></p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>出口定义了Webpack打包完以后生成的文件。常用的有这几个属性：<code>path</code>、<code>publicPath</code>、<code>filename</code>。<br><code>path</code>对应一个绝对路径，此路径是一次性打包的目录。<br><code>publicPath</code>被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值。<br><code>filename</code>出口的文件名</p>
+<pre><code class="javascript">const path = require(&#39;path&#39;);
+
+module.exports = {
+    entry: &#39;entry.js&#39;,
+    output: {
+        path: path.resolve(__dirname, &#39;dist&#39;),
+        publicPath : &quot;/&quot;,
+        filename: &#39;bundle.js&#39;
+    }
+};
+</code></pre>
+<p>更多应用应用场景可以参考<a href="https://doc.webpack-china.org/concepts/output/" target="_blank" rel="external">这里</a></p>
+<h2 id="加载器"><a href="#加载器" class="headerlink" title="加载器"></a>加载器</h2><p>Webpack本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。</p>
+<p>Loader可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。这样，我们就可以通过 require或者import来加载任何类型的模块或文件，比如CoffeeScript、JSX、LESS或图片。</p>
+<p>而转换对应的文件，只要通过npm安装对应的loader，然后在webpack.config.js中配置好。之后的一切就可以交给Webpack。</p>
+<pre><code class="javascript">{
+    loaders : [{
+        test : /\.(less|css)$/,
+        loader: &#39;style!css!less&#39;
+    },{
+        test : /\.(png|jpg|gif|woff|svg|eot|ttf)\??.*$/,
+        loader : &quot;url?limit=100&amp;name=/img/[name]-[hash:8].[ext]&quot;
+    },{
+        test : /\.jsx?$/,
+        loader : &quot;babel&quot;,
+        include : [APP_PATH,MOCK_PATH],
+        exclude : NODE_PATH,
+        query : {
+            presets : [&quot;es2015&quot;, &quot;react&quot;]
+        }
+    }]
+}
+</code></pre>
+<p>多个loader可以用在同一个文件上并且被链式调用。链式调用时从右到左执行且loader之间用“!”来分割。</p>
+<p><a href="https://webpack.github.io/docs/list-of-loaders.html" target="_blank" rel="external">这是</a>是loader列表，相当丰富。</p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>插件可以完成很多loader不能完成的功能。比如压缩文件、拷贝文件、提供公共资源等等之类的。<br>以压缩文件作为例子。</p>
+<pre><code class="javascript">plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true})
+]
+</code></pre>
+<p>加载器和插件搭配，可以完成很多工作。而且安装也很方便，通过npm就可以轻轻松松安装。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Webpack是前端模块管理和打包工具，配合loader和plugin，配置简单，功能强大。尽管它不是万能的，有时候也要配合gulp来完成其他功能，但依然值得你花时间去学习、使用它。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://zhaoda.net/webpack-handbook/index.html" target="_blank" rel="external">Webpack 中文指南</a></li>
+<li><a href="https://webpack.github.io/" target="_blank" rel="external">Webpack 官网</a></li>
+<li><a href="https://doc.webpack-china.org/" target="_blank" rel="external">Webpack 中国</a></li>
+</ul>
 ]]></content>
     </entry>
     

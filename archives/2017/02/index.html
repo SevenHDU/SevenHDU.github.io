@@ -14,7 +14,7 @@
   <!--在这里倒入jquery 方便处理部分页面的jquery-->
   <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
 </head>
-<body>
+<body class="home">
 	<header class="site-header navfixed-false">
   <div class="container">
       <h1><a href="/" title="LK&#39;s World"><span class="octicon octicon-mark-github"></span> LK&#39;s World</a></h1>
@@ -24,7 +24,7 @@
               <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="首页">首页</a>
         
               
-              <a href="/categories/"  class=" selected  site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
         
               
               <a href="/about/"  class=" site-header-nav-item hvr-underline-from-center" title="关于">关于</a>
@@ -33,58 +33,77 @@
   </div>
 </header>
 
-	
-<section class="collection-head geopattern" data-pattern-id="SQL" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                SQL
-            </h1>
-            
+	<section class="banner-false">
+    <div class="collection-head">
+        <div class="container">
+            <div class="collection-title">
+                <h1 class="collection-header" id="site-description">
+                    
+                </h1>
+                <div class="collection-info">
+                    
+                    
+                        <span class="meta-info">
+                            
+                                <span class="octicon octicon-location">
+                                   
+                                        HangZhou, China
+                                    
+                                </span>
+                                
+                            
+                        </span>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
-	<section class="container">
+	   <section class="container">
     <div class="columns">
-        <div class="column two-thirds" >
-            <article class="article-content markdown-body">
-                <section class="posts-content">
-                    
-                        <ol class="posts-list">
-                            
-                                
-                            
-                                
-                            
-                                
-                                    
-                                        <li class="posts-list-item">
-                                            <span class="posts-list-meta">
-                                                <time datetime="2014-08-18T15:32:41.000Z" itemprop="datePublished">2014-08-18</time>
-                                            </span>
-                                             
+        <div class="column two-thirds">
+            
+                  <article id="post-dynamic-requires-in-webpack" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
   
-      <a class="posts-list-name" href="/2014/08/18/DB2-sum-groupby/">DB2日期分组计算数据值</a>
+      <a class="article-title" href="/2017/02/22/dynamic-requires-in-webpack/">如何在Webpack中动态引用资源</a>
   
 
-                                        </li>
-                                    
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                        </ol>
-                    
-                </section>
-            </article>
+      </h3>
+      <div class="repo-list-description">
+        
+          <p><img src="http://ojf54mxmq.bkt.clouddn.com//17-3-22/509920-file_1490187075588_10c58.jpg" alt="Webpack"></p>
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2017-02-22T11:58:22.000Z" itemprop="datePublished">2017-02-22</time>
+        </span>
+
+        
+          <span class="meta-info">
+            <span class="octicon octicon-file-directory"></span>
+            <a href='/categories/前端构建工具/' title=''>前端构建工具</a>
+          </span>
+        
+
+        <!--
+          
+            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+
+            
         </div>
         <div class="column one-third">
-            <h3>Search</h3>
+          <h3>Search</h3>
 
 <div id="site_search">
 
@@ -104,7 +123,7 @@
 	
 
 </div>
-            
+
 	<h3>Blog Tags</h3>
 	<div id="blog-categories">
 		<ul class="list-group">
@@ -152,8 +171,11 @@
 		</ul>
 	</div>
 
+
         </div>
     </div>
+
+    
 </section>
 
 <footer class="container">
