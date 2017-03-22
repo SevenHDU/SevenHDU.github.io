@@ -14,7 +14,7 @@
   <!--在这里倒入jquery 方便处理部分页面的jquery-->
   <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
 </head>
-<body class="home">
+<body>
 	<header class="site-header navfixed-false">
   <div class="container">
       <h1><a href="/" title="LK&#39;s World"><span class="octicon octicon-mark-github"></span> LK&#39;s World</a></h1>
@@ -24,7 +24,7 @@
               <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="首页">首页</a>
         
               
-              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
+              <a href="/categories/"  class=" selected  site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
         
               
               <a href="/about/"  class=" site-header-nav-item hvr-underline-from-center" title="关于">关于</a>
@@ -33,157 +33,60 @@
   </div>
 </header>
 
-	<section class="banner-false">
-    <div class="collection-head">
-        <div class="container">
-            <div class="collection-title">
-                <h1 class="collection-header" id="site-description">
-                    
-                </h1>
-                <div class="collection-info">
-                    
-                    
-                        <span class="meta-info">
-                            
-                                <span class="octicon octicon-location">
-                                   
-                                        HangZhou, China
-                                    
-                                </span>
-                                
-                            
-                        </span>
-                    
-                </div>
-            </div>
+	
+<section class="collection-head geopattern" data-pattern-id="React" >
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">
+                React
+            </h1>
+            
         </div>
     </div>
 </section>
-	   <section class="container">
+
+	<section class="container">
     <div class="columns">
-        <div class="column two-thirds">
-            
-                  <article id="post-dom-event-flow" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
-        
+        <div class="column two-thirds" >
+            <article class="article-content markdown-body">
+                <section class="posts-content">
+                    
+                        <ol class="posts-list">
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                                    
+                                        <li class="posts-list-item">
+                                            <span class="posts-list-meta">
+                                                <time datetime="2016-04-02T12:38:30.000Z" itemprop="datePublished">2016-04-02</time>
+                                            </span>
+                                             
   
-      <a class="article-title" href="/2014/10/16/dom-event-flow/">深入理解DOM事件流</a>
-  
-
-      </h3>
-      <div class="repo-list-description">
-        
-          <p>当浏览器发展到第四代时（IE4和Netscape Communicator 4）,浏览器团队遇到一个很有意思的问题：页面的哪一部分会拥有特定的事件？想象下在一张纸上有一组同心圆，如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是一组圆。两家公司的开发团队在看待浏览器事件方面还是一致的。如果你单击了某个按钮，那么同时你也单击了按钮的容器元素，甚至整个页面。<br>事件流描述的是从页面中接受事件的顺序。但有意思的是，IE和Netscape开发团队居然提出了两个截然相反的事件流概念。IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2014-10-16T15:56:23.000Z" itemprop="datePublished">2014-10-16</time>
-        </span>
-
-        
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href='/categories/web/' title=''>web</a>
-          </span>
-        
-
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
-          
-        -->
-
-      </p>
-    </div>
-  </article>
-
-            
-                  <article id="post-you-must-know-the-nature-of-session" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
-        
-  
-      <a class="article-title" href="/2014/09/22/you-must-know-the-nature-of-session/">你必须了解的Session的本质</a>
+      <a class="posts-list-name" href="/2016/04/02/react-introduction/">初识React</a>
   
 
-      </h3>
-      <div class="repo-list-description">
-        
-          <blockquote>
-<p>作者：Chis<br>原文地址：<a href="http://shiflett.org/articles/the-truth-about-sessions">The Truth about Sessions</a></p>
-</blockquote>
-<p>有一点我们必须承认，大多数web应用程序都离不开Session的使用。这篇文章将会结合php以及http协议来分析如何建立一个安全的会话管理机制。我们先简单的了解一些http的知识，从而理解该协议的无状态特性。然后，学习一些关于cookie的基本操作。最后，我会一步步阐述如何使用一些简单，高效的方法来提高你的php应用程序的安全性以及稳定行。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2014-09-21T16:05:47.000Z" itemprop="datePublished">2014-09-22</time>
-        </span>
-
-        
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href='/categories/Web/' title=''>Web</a>
-          </span>
-        
-
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
-          
-        -->
-
-      </p>
-    </div>
-  </article>
-
-            
-                  <article id="post-DB2-sum-groupby" class="repo-list">
-    <div class="repo-list-item" >
-      <h3 class="repo-list-name" itemprop="name">
-        
-  
-      <a class="article-title" href="/2014/08/18/DB2-sum-groupby/">DB2日期分组计算数据值</a>
-  
-
-      </h3>
-      <div class="repo-list-description">
-        
-          <p>最近参与的项目进行了一次优化技改，对其中SQL参数化公用方法进行了改造。又因项目组人员调整，接手其他模块。</p>
-<p>在其他模块测试过程发现，一个针对日期分组计算的SQL报错，报SQL语句超长的异常。</p>
-        
-      </div>
-      <p class="repo-list-meta">
-        <span class="meta-info">
-          <span class="octicon octicon-calendar"></span>
-           <time datetime="2014-08-18T15:32:41.000Z" itemprop="datePublished">2014-08-18</time>
-        </span>
-
-        
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href='/categories/SQL/' title=''>SQL</a>
-          </span>
-        
-
-        <!--
-          
-            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB2/">DB2</a></li></ul>
-          
-        -->
-
-      </p>
-    </div>
-  </article>
-
-            
+                                        </li>
+                                    
+                                
+                            
+                        </ol>
+                    
+                </section>
+            </article>
         </div>
         <div class="column one-third">
-          <h3>Search</h3>
+            <h3>Search</h3>
 
 <div id="site_search">
 
@@ -203,7 +106,7 @@
 	
 
 </div>
-
+            
 	<h3>Blog Tags</h3>
 	<div id="blog-categories">
 		<ul class="list-group">
@@ -256,11 +159,8 @@
 		</ul>
 	</div>
 
-
         </div>
     </div>
-
-    
 </section>
 
 <footer class="container">

@@ -102,6 +102,77 @@ const images  = banner.map((item)=&gt;{
     </entry>
     
     <entry>
+      <title><![CDATA[初识React]]></title>
+      <url>http://www.sevenhdu.space/2016/04/02/react-introduction/</url>
+      <content type="html"><![CDATA[<p>React起源于Facebook的内部项目，由于对市面上的框架都不太满意，就决定自己搞一套，用来架设Instagram网站。</p>
+<p>React抛开很多所谓的“最佳实践”，重新思考前端界面的构建方式。<br>官网上是这么描述React的。</p>
+<blockquote>
+<p>A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES</p>
+</blockquote>
+<p>React仅仅是一个构建UI层的js库，却带来了很多开创性的思路来构建前端界面。比如使用JSX来编写页面，以组件化的方式构建页面，运用虚拟DOM来提升性能。</p>
+<a id="more"></a>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX是React的核心组成部分，它使用XML标记的方式去直接声明界面，界面组件之间可以互相嵌套。作为前端来说，学习JSX的成本很低。</p>
+<pre><code class="javascript">import React from &quot;react&quot;;
+import { render } from &#39;react-dom&#39;;
+
+render(
+    &lt;p&gt;Hello world&lt;/p&gt;
+,  document.body);
+</code></pre>
+<p>JSX中定义属性，添加事件也都很简单。</p>
+<pre><code class="javascript">import React, {Component} from &quot;react&quot;;
+
+export class Msg extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        let msg = this.props.msg;
+        let onClick = this.props.onClick;
+        return (
+            &lt;div onClick = {onClick}&gt;{msg}&lt;/div&gt;
+        )
+    }
+}
+
+export class SayHello extends Compoent{
+    constructor(props){
+        super(props);
+    }
+    sayHello(){
+        alert(&quot;Hello!&quot;);
+    }
+    render(){
+        return (
+            &lt;Msg msg=&quot;Hello, world&quot; onClick= {this.sayHello.bind(this)}/&gt;
+        )
+    }
+}
+</code></pre>
+<p>子组件通过props获取父组件传递的属性，包括事件函数。</p>
+<h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>组件并不是一个新的概念，它意味着某个独立功能或界面的封装，达到复用、或是业务逻辑分离的目的。React这样理解界面组件：</p>
+<blockquote>
+<p><strong>所谓组件，就是状态机器</strong></p>
+<p>React将用户界面看做简单的状态机器。当组件处于某个状态时，那么就输出这个状态对应的界面。通过这种方式，就很容易去保证界面的一致性。</p>
+<p>在React中，你简单的去更新某个组件的状态，然后输出基于新状态的整个界面。React负责以最高效的方式去比较两个界面并更新DOM树。</p>
+</blockquote>
+<p>所以对组件的管理其实就是对状态的管理。</p>
+<h2 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h2><p>虚拟DOM，顾名思义不是真正的DOM，它只是保存在内存中的一种数据结构，在JS里其实就是对象。其高效的Diff算法让我们可以无需担心性能问题而”毫无顾忌”的随时“刷新”整个页面，由虚拟DOM来确保只对界面上真正变化的部分进行实际的DOM操作。</p>
+<p>即给定任意两棵树，找到最少的转换步骤。但是标准的的Diff算法复杂度需要O(n^3)，这显然无法满足性能要求。要达到每次界面都可以整体刷新界面的目的，势必需要对算法进行优化。这看上去非常有难度，然而Facebook工程师却做到了，他们结合Web界面的特点做出了两个简单的假设，使得Diff算法复杂度直接降低到O(n)</p>
+<ul>
+<li>两个相同组件产生类似的DOM结构，不同的组件产生不同的DOM结构；</li>
+<li>对于同一层次的一组子节点，它们可以通过唯一的id进行区分。</li>
+</ul>
+<p>算法上的优化是React整个界面Render的基础，事实也证明这两个假设是合理而精确的，保证了整体界面构建的性能。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上面的几点，可以对React有个大概的了解。但要在项目中使用React，还需要了解它的生命周期，以及Facebook官方推荐使用的数据管理方式Flux(单向数据流)。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://www.infoq.com/cn/articles/react-art-of-simplity?utm_source=articles_about_dive-into-react&amp;utm_medium=link&amp;utm_campaign=dive-into-react" target="_blank" rel="external">深入浅出React（一）：React的设计哲学 - 简单之美</a></li>
+<li><a href="http://www.infoq.com/cn/articles/react-dom-diff" target="_blank" rel="external">深入浅出React（四）：虚拟DOM Diff算法解析</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Atom编辑器快捷键大全]]></title>
       <url>http://www.sevenhdu.space/2016/03/24/Atom-shortcut-keys/</url>
       <content type="html"><![CDATA[<blockquote>
