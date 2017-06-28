@@ -64,6 +64,8 @@
                                 
                             
                                 
+                            
+                                
                                     
                                         <li class="posts-list-item">
                                             <span class="posts-list-meta">
@@ -76,8 +78,6 @@
 
                                         </li>
                                     
-                                
-                            
                                 
                             
                         </ol>
@@ -112,8 +112,8 @@
 		<ul class="list-group">
 			
 				<li class="list-group-item">
-					Atom
-	            	<span class="badge">1</span>
+					HTML5
+	            	<span class="badge">2</span>
 	        	</li>
 	 		
 				<li class="list-group-item">
@@ -122,18 +122,18 @@
 	        	</li>
 	 		
 				<li class="list-group-item">
-					DB2
+					Atom
 	            	<span class="badge">1</span>
-	        	</li>
-	 		
-				<li class="list-group-item">
-					HTML5
-	            	<span class="badge">2</span>
 	        	</li>
 	 		
 				<li class="list-group-item">
 					CSS
 	            	<span class="badge">2</span>
+	        	</li>
+	 		
+				<li class="list-group-item">
+					DB2
+	            	<span class="badge">1</span>
 	        	</li>
 	 		
 				<li class="list-group-item">
@@ -156,6 +156,11 @@
 	            	<span class="badge">1</span>
 	        	</li>
 	 		
+				<li class="list-group-item">
+					git
+	            	<span class="badge">1</span>
+	        	</li>
+	 		
 		</ul>
 	</div>
 
@@ -169,104 +174,6 @@
                 © 2017
                 <span title="yumemor">yumemor</span>
                 <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
-
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
-
-        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-        <ul class="site-footer-links mobile-hidden">
-            
-                  
-                  <li>
-                    <a href="/"  title="首页">首页</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/categories/"  title="分类">分类</a>
-                  </li>
-            
-                  
-                  <li>
-                    <a href="/about/"  title="关于">关于</a>
-                  </li>
-            
-            <li>
-                <a href="/atom.xml">
-                    <span class="octicon octicon-rss" style="color:orange;"></span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</footer>
-
-		<script src="/js/geopattern.js"></script>
-		<script src="/js/highlight.pack.js"></script>
-		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-
-		
-
-		
-			<script src="/js/search.js"></script>
-
-			<script type="text/javascript">
-				$(function(){
-					var currentIndex = -1;
-					var search_path = "search.xml";
-					if (!search_path) search_path = "search.xml";
-					var path = "/" + search_path;
-					searchFunc(path, 'search', 'local-search-result');
-
-					$(document).delegate("#local-search-result>.search-result-list li","hover",function(){
-						var liNode = $("#local-search-result>.search-result-list li");
-						liNode.removeClass("hover");
-						currentIndex = $("#local-search-result>.search-result-list li").index($(this));
-						liNode.eq(currentIndex).addClass("hover");
-					})
-
-					$("#search-form").submit(function(){
-						return false;
-					})
-
-					$("#search").keydown(function(event){
-						var keyCode = event.keyCode;
-						var liNode = $("#local-search-result>.search-result-list li");
-						if(keyCode == 38 || keyCode == 40 || keyCode == 13){
-							liNode.removeClass("hover");
-							if(keyCode == 38){
-								if(currentIndex - 1 >= 0) currentIndex --;
-							}
-							if(keyCode == 40){
-								if(currentIndex + 1 < liNode.length) currentIndex ++;
-							}
-							if(keyCode == 13){
-								location.href = liNode.eq(currentIndex).find("a").attr("href");
-							}
-							liNode.eq(currentIndex).addClass("hover");
-							return false;
-						}else{
-							currentIndex = -1;
-						}
-					})
-				})
-			</script>
-		
-
-		<script src="/js/index.js"></script>
-
-		 <script src="/js/popular_repo.js"></script> 
-
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	</body>
-</html>
-/a>
         </div>
 
         <ul class="site-footer-links right mobile-hidden">

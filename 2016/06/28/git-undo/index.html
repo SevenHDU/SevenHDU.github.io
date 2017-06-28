@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <link rel="icon" href="/favicon.ico">
+  
+  <title>LK&#39;s World | 如何在 Git 里撤销(几乎)任何操作</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox-1.3.4.css">
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
+</head>
+
+<body>
+	<header class="site-header navfixed-false">
+  <div class="container">
+      <h1><a href="/" title="LK&#39;s World"><span class="octicon octicon-mark-github"></span> LK&#39;s World</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="首页">首页</a>
+        
+              
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
+        
+              
+              <a href="/about/"  class=" site-header-nav-item hvr-underline-from-center" title="关于">关于</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+<section class="collection-head geopattern" data-pattern-id="如何在 Git 里撤销(几乎)任何操作" >
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">
+                如何在 Git 里撤销(几乎)任何操作
+            </h1>
+            
+                <div class="collection-info">
+                    <span class="meta-info">
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2016-06-27T16:12:29.000Z" itemprop="datePublished">2016-06-28</time>
+                    </span>
+                    
+                    阅读次数<span id="busuanzi_value_page_pv"></span>
+                </div>
+            
+        </div>
+    </div>
+</section>
+
+	<section class="container">
+    <div class="columns">
+        <div class="column three-fourths" >
+            <article class="article-content markdown-body">
+                <blockquote>
+<p>原文地址：<a href="http://blog.jobbole.com/87700/" target="_blank" rel="external">http://blog.jobbole.com/87700/</a></p>
+</blockquote>
+<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-6-28/98243103.jpg" alt=""></p>
+<a id="more"></a>
+<p>任何版本控制系统的一个最有的用特性就是“撤销 (undo)”你的错误操作的能力。在 Git 里，“撤销” 蕴含了不少略有差别的功能。</p>
+<p>当你进行一次新的提交的时候，Git 会保存你代码库在那个特定时间点的快照；之后，你可以利用 Git 返回到你的项目的一个早期版本。</p>
+<p>在本篇博文里，我会讲解某些你需要“撤销”已做出的修改的常见场景，以及利用 Git 进行这些操作的最佳方法。</p>
+<h2 id="撤销一个“已公开”的改变"><a href="#撤销一个“已公开”的改变" class="headerlink" title="撤销一个“已公开”的改变"></a>撤销一个“已公开”的改变</h2><p><strong>场景</strong>: 你已经执行了 git push, 把你的修改发送到了 GitHub，现在你意识到这些 commit 的其中一个是有问题的，你需要撤销那一个 commit。</p>
+<p><strong>方法</strong>: <code>git revert &lt;SHA&gt;</code></p>
+<p><strong>原理</strong>: git revert 会产生一个新的 commit，它和指定 SHA 对应的 commit 是相反的（或者说是反转的）。如果原先的 commit 是“物质”，新的 commit 就是“反物质” — 任何从原先的 commit 里删除的内容会在新的 commit 里被加回去，任何在原先的 commit 里加入的内容会在新的 commit  里被删除。</p>
+<p>这是 Git 最安全、最基本的撤销场景，因为它并不会改变历史 — 所以你现在可以  git push 新的“反转” commit 来抵消你错误提交的 commit。</p>
+<h2 id="修正最后一个-commit-消息"><a href="#修正最后一个-commit-消息" class="headerlink" title="修正最后一个 commit 消息"></a>修正最后一个 commit 消息</h2><p><strong>场景</strong>: 你在最后一条 commit 消息里有个笔误，已经执行了 git commit -m “Fxies bug #42”，但在 git push 之前你意识到消息应该是 “Fixes bug #42″。</p>
+<p><strong>方法</strong>: <code>git commit --amend 或 git commit --amend -m &quot;Fixes bug #42&quot;</code></p>
+<p><strong>原理</strong>: git commit –amend 会用一个新的 commit 更新并替换最近的 commit ，这个新的 commit 会把任何修改内容和上一个 commit 的内容结合起来。如果当前没有提出任何修改，这个操作就只会把上次的 commit 消息重写一遍。</p>
+<h2 id="撤销“本地的”修改"><a href="#撤销“本地的”修改" class="headerlink" title="撤销“本地的”修改"></a>撤销“本地的”修改</h2><p><strong>场景</strong>: 一只猫从键盘上走过，无意中保存了修改，然后破坏了编辑器。不过，你还没有 commit 这些修改。你想要恢复被修改文件里的所有内容 — 就像上次 commit 的时候一模一样。</p>
+<p><strong>方法</strong>: <code>git checkout -- &lt;bad filename&gt;</code></p>
+<p><strong>原理</strong>: git checkout 会把工作目录里的文件修改到 Git 之前记录的某个状态。你可以提供一个你想返回的分支名或特定 SHA ，或者在缺省情况下，Git 会认为你希望 checkout 的是 HEAD，当前 checkout 分支的最后一次 commit。</p>
+<p><strong>记住</strong>：你用这种方法“撤销”的任何修改真的会完全消失。因为它们从来没有被提交过，所以之后 Git 也无法帮助我们恢复它们。你要确保自己了解你在这个操作里扔掉的东西是什么！（也许可以先利用 git diff 确认一下）</p>
+<h2 id="重置“本地的”修改"><a href="#重置“本地的”修改" class="headerlink" title="重置“本地的”修改"></a>重置“本地的”修改</h2><p><strong>场景</strong>: 你在本地提交了一些东西（还没有 push），但是所有这些东西都很糟糕，你希望撤销前面的三次提交 — 就像它们从来没有发生过一样。</p>
+<p><strong>方法</strong>: <code>git reset &lt;last good SHA&gt; 或 git reset --hard &lt;last good SHA&gt;</code></p>
+<p><strong>原理</strong>: git reset 会把你的代码库历史返回到指定的 SHA 状态。 这样就像是这些提交从来没有发生过。缺省情况下， git reset 会保留工作目录。这样，提交是没有了，但是修改内容还在磁盘上。这是一种安全的选择，但通常我们会希望一步就“撤销”提交以及修改内容 — 这就是 –hard 选项的功能。</p>
+<p>##在撤销“本地修改”之后再恢复</p>
+<p><strong>场景</strong>: 你提交了几个 commit，然后用 git reset –hard 撤销了这些修改（见上一段），接着你又意识到：你希望还原这些修改！</p>
+<p><strong>方法</strong>: git reflog 和 git reset 或 git checkout</p>
+<p><strong>原理</strong>: git reflog 对于恢复项目历史是一个超棒的资源。你可以恢复几乎 任何东西 — 任何你 commit 过的东西 — 只要通过 reflog。</p>
+<p>你可能已经熟悉了 git log 命令，它会显示 commit 的列表。 git reflog 也是类似的，不过它显示的是一个 HEAD 发生改变的时间列表.</p>
+<p>一些注意事项</p>
+<ul>
+<li>它涉及的只是 HEAD 的改变。在你切换分支、用 git commit 进行提交、以及用 git reset 撤销 commit 时，HEAD 会改变，但当你用  git checkout – <bad filename=""> 撤销时（正如我们在前面讲到的情况），HEAD 并不会改变 — 如前所述，这些修改从来没有被提交过，因此 reflog 也无法帮助我们恢复它们。</bad></li>
+<li>git reflog 不会永远保持。Git 会定期清理那些 “用不到的” 对象。不要指望几个月前的提交还一直躺在那里。</li>
+<li>你的 reflog 就是你的，只是你的。你不能用 git reflog 来恢复另一个开发者没有 push 过的 commit。</li>
+</ul>
+<p>那么…你怎么利用 reflog 来“恢复”之前“撤销”的 commit 呢？它取决于你想做到的到底是什么：</p>
+<ul>
+<li>如果你希望准确地恢复项目的历史到某个时间点，用 <code>git reset --hard &lt;SHA&gt;</code></li>
+<li>如果你希望重建工作目录里的一个或多个文件，让它们恢复到某个时间点的状态，用 <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code></li>
+<li>如果你希望把这些 commit 里的某一个重新提交到你的代码库里，用 <code>git cherry-pick &lt;SHA&gt;</code></li>
+</ul>
+<h2 id="利用分支的另一种做法"><a href="#利用分支的另一种做法" class="headerlink" title="利用分支的另一种做法"></a>利用分支的另一种做法</h2><p><strong>场景</strong>: 你进行了一些提交，然后意识到你开始 check out 的是 master 分支。你希望这些提交进到另一个特性（feature）分支里。</p>
+<p><strong>方法</strong>: git branch feature, git reset –hard origin/master, and git checkout feature</p>
+<p><strong>原理</strong>: 你可能习惯了用 git checkout -b <name> 创建新的分支 — 这是创建新分支并马上 check out 的流行捷径 — 但是你不希望马上切换分支。这里， git branch feature 创建一个叫做 feature 的新分支并指向你最近的 commit，但还是让你 check out 在 master 分支上。</name></p>
+<p>下一步，在提交任何新的 commit 之前，用 git reset –hard 把 master 分支倒回 origin/master 。不过别担心，那些 commit 还在 feature 分支里。</p>
+<p>最后，用 git checkout 切换到新的 feature 分支，并且让你最近所有的工作成果都完好无损。</p>
+<h2 id="及时分支，省去繁琐"><a href="#及时分支，省去繁琐" class="headerlink" title="及时分支，省去繁琐"></a>及时分支，省去繁琐</h2><p><strong>场景</strong>: 你在 master 分支的基础上创建了 feature 分支，但 master 分支已经滞后于 origin/master 很多。现在 master 分支已经和 origin/master 同步，你希望在 feature 上的提交是从现在开始，而不是也从滞后很多的地方开始。</p>
+<p><strong>方法</strong>: git checkout feature 和 git rebase master</p>
+<p><strong>原理</strong>: 要达到这个效果，你本来可以通过 git reset (不加 –hard, 这样可以在磁盘上保留修改) 和 git checkout -b <new branch="" name=""> 然后再重新提交修改，不过这样做的话，你就会失去提交历史。我们有更好的办法。</new></p>
+<p>git rebase master 会做如下的事情：</p>
+<ul>
+<li>首先它会找到你当前 check out 的分支和 master 分支的共同祖先。</li>
+<li>然后它 reset 当前  check out 的分支到那个共同祖先，在一个临时保存区存放所有之前的提交。</li>
+<li>然后它把当前 check out 的分支提到 master 的末尾部分，并从临时保存区重新把存放的 commit 提交到 master 分支的最后一个 commit 之后。</li>
+</ul>
+<h2 id="大量的撤销-恢复"><a href="#大量的撤销-恢复" class="headerlink" title="大量的撤销/恢复"></a>大量的撤销/恢复</h2><p><strong>场景</strong>: 你向某个方向开始实现一个特性，但是半路你意识到另一个方案更好。你已经进行了十几次提交，但你现在只需要其中的一部分。你希望其他不需要的提交统统消失。</p>
+<p><strong>方法</strong>: <code>git rebase -i &lt;earlier SHA&gt;</code></p>
+<p><strong>原理</strong>: -i 参数让 rebase 进入“交互模式”。它开始类似于前面讨论的 rebase，但在重新进行任何提交之前，它会暂停下来并允许你详细地修改每个提交。</p>
+<p>rebase -i 会打开你的缺省文本编辑器，里面列出候选的提交。如下所示：</p>
+<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-6-29/40773304.jpg" alt=""></p>
+<p>前面两列是键：第一个是选定的命令，对应第二列里的 SHA 确定的 commit。缺省情况下， rebase -i  假定每个 commit 都要通过  pick 命令被运用。</p>
+<p>要丢弃一个 commit，只要在编辑器里删除那一行就行了。如果你不再需要项目里的那几个错误的提交，你可以删除上例中的1、3、4行。</p>
+<p>如果你需要保留 commit 的内容，而是对 commit 消息进行编辑，你可以使用 reword 命令。 把第一列里的 pick 替换为 reword (或者直接用 r)。有人会觉得在这里直接重写 commit 消息就行了，但是这样不管用 —rebase -i 会忽略 SHA 列前面的任何东西。它后面的文本只是用来帮助我们记住 0835fe2 是干啥的。当你完成 rebase -i 的操作之后，你会被提示输入需要编写的任何 commit 消息。</p>
+<p>如果你需要把两个 commit 合并到一起，你可以使用 squash 或 fixup 命令，如下所示：</p>
+<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-6-29/85202375.jpg" alt=""></p>
+<p>squash 和 fixup 会“向上”合并 — 带有这两个命令的 commit 会被合并到它的前一个 commit 里。在这个例子里， 0835fe2 和 6943e85 会被合并成一个 commit， 38f5e4e 和 af67f82 会被合并成另一个。</p>
+<p>如果你选择了 squash， Git 会提示我们给新合并的 commit 一个新的 commit 消息； fixup 则会把合并清单里第一个 commit 的消息直接给新合并的 commit 。 这里，你知道 af67f82 是一个“完了完了….” 的 commit，所以你会留着 38f5e4e as的 commit 消息，但你会给合并了 0835fe2 和 6943e85 的新 commit 编写一个新的消息。</p>
+<p>在你保存并退出编辑器的时候，Git 会按从顶部到底部的顺序运用你的 commit。你可以通过在保存前修改 commit 顺序来改变运用的顺序。如果你愿意，你也可以通过如下安排把 af67f82 和 0835fe2 合并到一起：</p>
+<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-6-29/28442311.jpg" alt=""></p>
+<h2 id="修复更早期的-commit"><a href="#修复更早期的-commit" class="headerlink" title="修复更早期的 commit"></a>修复更早期的 commit</h2><p><strong>场景</strong>: 你在一个更早期的 commit 里忘记了加入一个文件，如果更早的 commit 能包含这个忘记的文件就太棒了。你还没有 push，但这个 commit 不是最近的，所以你没法用 commit –amend.</p>
+<p><strong>方法</strong>: git commit –squash <sha of="" the="" earlier="" commit=""> 和 git rebase –autosquash -i <even earlier="" sha=""></even></sha></p>
+<p><strong>原理</strong>: git commit –squash 会创建一个新的 commit ，它带有一个 commit 消息，类似于 squash! Earlier commit。 (你也可以手工创建一个带有类似 commit 消息的 commit，但是 commit –squash 可以帮你省下输入的工作。)</p>
+<p>如果你不想被提示为新合并的 commit 输入一条新的 commit 消息，你也可以利用 git commit –fixup 。在这个情况下，你很可能会用commit –fixup ，因为你只是希望在 rebase 的时候使用早期 commit 的 commit 消息。</p>
+<p>rebase –autosquash -i  会激活一个交互式的 rebase 编辑器，但是编辑器打开的时候，在 commit 清单里任何 squash! 和 fixup! 的 commit 都已经配对到目标 commit 上了，如下所示：</p>
+<p><img src="http://ojf54mxmq.bkt.clouddn.com//17-6-29/95995895.jpg" alt=""></p>
+<p>在使用 –squash 和 –fixup 的时候，你可能不记得想要修正的 commit 的 SHA 了— 只记得它是前面第 1 个或第 5 个 commit。你会发现 Git 的 ^ 和 ~ 操作符特别好用。HEAD^ 是 HEAD 的前一个 commit。 HEAD~4 是 HEAD 往前第 4 个 – 或者一起算，倒数第 5 个 commit。</p>
+<h2 id="停止追踪一个文件"><a href="#停止追踪一个文件" class="headerlink" title="停止追踪一个文件"></a>停止追踪一个文件</h2><p><strong>场景</strong>: 你偶然把 application.log 加到代码库里了，现在每次你运行应用，Git 都会报告在 application.log 里有未提交的修改。你把 *.login 放到了 .gitignore 文件里，可文件还是在代码库里 — 你怎么才能告诉 Git “撤销” 对这个文件的追踪呢？</p>
+<p><strong>方法</strong>: git rm –cached application.log</p>
+<p><strong>原理</strong>: 虽然 .gitignore 会阻止 Git 追踪文件的修改，甚至不关注文件是否存在，但这只是针对那些以前从来没有追踪过的文件。一旦有个文件被加入并提交了，Git 就会持续关注该文件的改变。类似地，如果你利用 git add -f 来强制或覆盖了 .gitignore， Git 还会持续追踪改变的情况。之后你就不必用-f  来添加这个文件了。</p>
+<p>如果你希望从 Git 的追踪对象中删除那个本应忽略的文件， git rm –cached 会从追踪对象中删除它，但让文件在磁盘上保持原封不动。因为现在它已经被忽略了，你在  git status 里就不会再看见这个文件，也不会再偶然提交该文件的修改了。</p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>这就是如何在 Git 里撤销任何操作的方法。要了解更多关于本文中用到的 Git 命令，请查看下面的有关文档：</p>
+<ul>
+<li><a href="https://git-scm.com/docs/git-checkout" target="_blank" rel="external">checkout</a></li>
+<li><a href="https://git-scm.com/docs/git-commit" target="_blank" rel="external">commit</a></li>
+<li><a href="https://git-scm.com/docs/git-rebase" target="_blank" rel="external">rebase</a></li>
+<li><a href="https://git-scm.com/docs/git-reflog" target="_blank" rel="external">reflog</a></li>
+<li><a href="https://git-scm.com/docs/git-reset" target="_blank" rel="external">reset</a></li>
+<li><a href="https://git-scm.com/docs/git-revert" target="_blank" rel="external">revert</a></li>
+<li><a href="https://git-scm.com/docs/git-rm" target="_blank" rel="external">rm</a></li>
+</ul>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component" data-disabled="google,twitter,facebook" data-description="
+原文地址：http://blog.jobbole.c..."></div>
+
+<script src="/js/share.min.js"></script>
+
+                </div>    
+            
+
+            
+            
+                
+                    
+<div class="comments">
+	<div class="ds-thread" data-thread-key="git-undo" data-title="如何在 Git 里撤销(几乎)任何操作" data-url="http://www.sevenhdu.space/2016/06/28/git-undo/"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"sevenhdu"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+</div>
+
+                
+            
+
+        </div>
+        <div class="column one-fourth">
+            
+                
+                
+
+
+<h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销一个“已公开”的改变"><span class="toc-text">撤销一个“已公开”的改变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修正最后一个-commit-消息"><span class="toc-text">修正最后一个 commit 消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销“本地的”修改"><span class="toc-text">撤销“本地的”修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重置“本地的”修改"><span class="toc-text">重置“本地的”修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用分支的另一种做法"><span class="toc-text">利用分支的另一种做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#及时分支，省去繁琐"><span class="toc-text">及时分支，省去繁琐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大量的撤销-恢复"><span class="toc-text">大量的撤销/恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修复更早期的-commit"><span class="toc-text">修复更早期的 commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#停止追踪一个文件"><span class="toc-text">停止追踪一个文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关链接"><span class="toc-text">相关链接</span></a></li></ol>
+	</section>
+</div>
+            
+        </div>
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2017
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/hexo-theme-primer" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+                  
+                  <li>
+                    <a href="/"  title="首页">首页</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/categories/"  title="分类">分类</a>
+                  </li>
+            
+                  
+                  <li>
+                    <a href="/about/"  title="关于">关于</a>
+                  </li>
+            
+            <li>
+                <a href="/atom.xml">
+                    <span class="octicon octicon-rss" style="color:orange;"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+		<script src="/js/geopattern.js"></script>
+		<script src="/js/highlight.pack.js"></script>
+		<script src="/lib/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+		
+			<script src="/js/toc.js"></script>
+		
+
+		
+			<script src="/js/search.js"></script>
+
+			<script type="text/javascript">
+				$(function(){
+					var currentIndex = -1;
+					var search_path = "search.xml";
+					if (!search_path) search_path = "search.xml";
+					var path = "/" + search_path;
+					searchFunc(path, 'search', 'local-search-result');
+
+					$(document).delegate("#local-search-result>.search-result-list li","hover",function(){
+						var liNode = $("#local-search-result>.search-result-list li");
+						liNode.removeClass("hover");
+						currentIndex = $("#local-search-result>.search-result-list li").index($(this));
+						liNode.eq(currentIndex).addClass("hover");
+					})
+
+					$("#search-form").submit(function(){
+						return false;
+					})
+
+					$("#search").keydown(function(event){
+						var keyCode = event.keyCode;
+						var liNode = $("#local-search-result>.search-result-list li");
+						if(keyCode == 38 || keyCode == 40 || keyCode == 13){
+							liNode.removeClass("hover");
+							if(keyCode == 38){
+								if(currentIndex - 1 >= 0) currentIndex --;
+							}
+							if(keyCode == 40){
+								if(currentIndex + 1 < liNode.length) currentIndex ++;
+							}
+							if(keyCode == 13){
+								location.href = liNode.eq(currentIndex).find("a").attr("href");
+							}
+							liNode.eq(currentIndex).addClass("hover");
+							return false;
+						}else{
+							currentIndex = -1;
+						}
+					})
+				})
+			</script>
+		
+
+		<script src="/js/index.js"></script>
+
+		 <script src="/js/popular_repo.js"></script> 
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	</body>
+</html>
