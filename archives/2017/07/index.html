@@ -14,7 +14,7 @@
   <!--在这里倒入jquery 方便处理部分页面的jquery-->
   <script src="https://cdn.staticfile.org/jquery/1.7/jquery.min.js" type="text/javascript" ></script>
 </head>
-<body>
+<body class="home">
 	<header class="site-header navfixed-false">
   <div class="container">
       <h1><a href="/" title="LK&#39;s World"><span class="octicon octicon-mark-github"></span> LK&#39;s World</a></h1>
@@ -24,7 +24,7 @@
               <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="首页">首页</a>
         
               
-              <a href="/categories/"  class=" selected  site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
+              <a href="/categories/"  class=" site-header-nav-item hvr-underline-from-center" title="分类">分类</a>
         
               
               <a href="/about/"  class=" site-header-nav-item hvr-underline-from-center" title="关于">关于</a>
@@ -33,71 +33,73 @@
   </div>
 </header>
 
-	
-<section class="collection-head geopattern" data-pattern-id="work" >
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">
-                work
-            </h1>
-            
+	<section class="banner-false">
+    <div class="collection-head">
+        <div class="container">
+            <div class="collection-title">
+                <h1 class="collection-header" id="site-description">
+                    
+                </h1>
+                <div class="collection-info">
+                    
+                    
+                        <span class="meta-info">
+                            
+                                <span class="octicon octicon-location">
+                                   
+                                        HangZhou, China
+                                    
+                                </span>
+                                
+                            
+                        </span>
+                    
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
-	<section class="container">
+	   <section class="container">
     <div class="columns">
-        <div class="column two-thirds" >
-            <article class="article-content markdown-body">
-                <section class="posts-content">
-                    
-                        <ol class="posts-list">
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                                    
-                                        <li class="posts-list-item">
-                                            <span class="posts-list-meta">
-                                                <time datetime="2017-03-15T12:37:23.000Z" itemprop="datePublished">2017-03-15</time>
-                                            </span>
-                                             
+        <div class="column two-thirds">
+            
+                  <article id="post-read-redux-source-code" class="repo-list">
+    <div class="repo-list-item" >
+      <h3 class="repo-list-name" itemprop="name">
+        
   
-      <a class="posts-list-name" href="/2017/03/15/make-call-in-mobile/">如何在移动端触发手机拨打电话</a>
+      <a class="article-title" href="/2017/07/20/read-redux-source-code/">阅读Redux源码</a>
   
 
-                                        </li>
-                                    
-                                        <li class="posts-list-item">
-                                            <span class="posts-list-meta">
-                                                <time datetime="2016-09-17T09:02:33.000Z" itemprop="datePublished">2016-09-17</time>
-                                            </span>
-                                             
-  
-      <a class="posts-list-name" href="/2016/09/17/position-fixed-not-work-in-transform/">fixed定位元素在设置了transform属性父元素下失效</a>
-  
+      </h3>
+      <div class="repo-list-description">
+        
+          <p><img src="http://ojf54mxmq.bkt.clouddn.com//17-7-20/45502578.jpg" alt="Redux"></p>
+<p>前段时间看了下Redux的源码，觉得很有必要写个Blog记下来，算是一个加深印象，巩固知识的过程。</p>
+        
+      </div>
+      <p class="repo-list-meta">
+        <span class="meta-info">
+          <span class="octicon octicon-calendar"></span>
+           <time datetime="2017-07-20T14:57:05.000Z" itemprop="datePublished">2017-07-20</time>
+        </span>
 
-                                        </li>
-                                    
-                                
-                            
-                                
-                            
-                        </ol>
-                    
-                </section>
-            </article>
+        
+
+        <!--
+          
+            <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li></ul>
+          
+        -->
+
+      </p>
+    </div>
+  </article>
+
+            
         </div>
         <div class="column one-third">
-            <h3>Search</h3>
+          <h3>Search</h3>
 
 <div id="site_search">
 
@@ -117,7 +119,7 @@
 	
 
 </div>
-            
+
 	<h3>Blog Tags</h3>
 	<div id="blog-categories">
 		<ul class="list-group">
@@ -180,8 +182,11 @@
 		</ul>
 	</div>
 
+
         </div>
     </div>
+
+    
 </section>
 
 <footer class="container">
